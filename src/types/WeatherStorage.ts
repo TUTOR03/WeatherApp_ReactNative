@@ -85,3 +85,5 @@ type SetWeatherStateAction = {
   type: 'SET_WEATHER_STATE'
   new_state: WeatherStateT
 }
+
+export type avaliableCitiesT = string[]

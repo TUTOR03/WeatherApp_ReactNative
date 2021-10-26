@@ -7,6 +7,7 @@ export const COLORS = {
   white: '#ffffff',
   lightBlue: '#4689D8',
   darkBlueOpacity: 'rgba(114, 166, 226, 0.3)',
+  dark: '#313131',
 }
 
 export const FONTS = {

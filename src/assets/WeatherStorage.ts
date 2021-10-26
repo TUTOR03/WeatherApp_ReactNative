@@ -1,6 +1,6 @@
-import { WeatherStateT } from '@type/WeatherStorage'
+import { WeatherStateT, avaliableCitiesT } from '@type/WeatherStorage'
 
-export const initialWeatherState: WeatherStateT = {
+export const getInitialWeatherState = (): WeatherStateT => ({
   city_name: '',
   lon: -1,
   lat: -1,
@@ -26,4 +26,13 @@ export const initialWeatherState: WeatherStateT = {
     timestamp: -1,
     timezone_offset: -1,
   },
-}
+})
+
+export const avaliableCities: avaliableCitiesT = [
+  'Москва',
+  'Казань',
+  'Крым',
+  'Санкт-Петербург',
+  'Владимир',
+  'Екатеринбург',
+]

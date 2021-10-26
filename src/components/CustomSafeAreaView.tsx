@@ -1,3 +1,4 @@
+import { SIZES } from '@assets/theme'
 import React from 'react'
 import {
   Platform,
@@ -19,7 +20,10 @@ const CustomSafeAreaView: React.FC<CustomSafeAreaViewProps> = ({
     <SafeAreaView
       style={[
         {
-          paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+          paddingTop:
+            Platform.OS === 'android' && StatusBar.currentHeight
+              ? StatusBar.currentHeight + SIZES.padding
+              : SIZES.padding,
         },
         style,
       ]}

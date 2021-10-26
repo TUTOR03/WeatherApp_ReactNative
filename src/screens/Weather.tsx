@@ -1,4 +1,4 @@
-import { COLORS, SIZES } from '@assets/theme'
+import { COLORS, FONTS, SIZES } from '@assets/theme'
 import { weatherThemes } from '@assets/theme'
 import CustomSafeAreaView from '@components/CustomSafeAreaView'
 import WeatherForecast from '@components/WeatherForecast'
@@ -7,15 +7,19 @@ import WeatherInfoMain from '@components/WeatherInfoMain'
 import { useWeather } from '@hooks/WeatherStorage'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '@type/Navigation'
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { GestureResponderEvent, StyleSheet, Text } from 'react-native'
 
 type WeatherProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Weather'>
 }
 
 const Weather: React.FC<WeatherProps> = ({ navigation }) => {
-  const { state, dispatch } = useWeather()
+  const { state } = useWeather()
+
+  const changeSity = (e: GestureResponderEvent) => {
+    navigation.navigate('Cities')
+  }
 
   return (
     <CustomSafeAreaView
@@ -29,6 +33,7 @@ const Weather: React.FC<WeatherProps> = ({ navigation }) => {
         temp={state.weather.temp}
         description={state.weather.description}
         type={state.weather.type}
+        onListButtonPress={changeSity}
       />
       <WeatherInfoExpanded additional={state.weather.additional} />
       <WeatherForecast forecast={state.forecast.hourly} />
@@ -40,6 +45,14 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     paddingHorizontal: SIZES.padding,
+  },
+  mainContainerNoSity: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.dark,
+  },
+  noSityText: {
+    fontSize: FONTS.h4,
   },
 })
 
